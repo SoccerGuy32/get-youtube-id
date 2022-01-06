@@ -26,16 +26,14 @@
         /\/v\/([^#\&\?]{11})/         // /v/<id>
       ];
 
-      // If any pattern matches, return the ID
+      
       for (i = 0; i < patterns.length; ++i) {
         if (patterns[i].test(url)) {
           return patterns[i].exec(url)[1];
         }
       }
 
-      if (opts.fuzzy) {
-        // If that fails, break it apart by certain characters and look 
-        // for the 11 character key
+      if (opts.fuzzy) { 
         var tokens = url.split(/[\/\&\?=#\.\s]/g);
         for (i = 0; i < tokens.length; ++i) {
           if (/^[^#\&\?]{11}$/.test(tokens[i])) {
